@@ -1,0 +1,35 @@
+name: CI Pipeline
+
+# Trigger: Se activa en push o pull request a la rama main
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Paso 1: Obtener el código del repositorio
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # Paso 2: Instalar Node.js
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    # Paso 3: Instalar dependencias
+    - name: Install dependencies
+      run: npm install
+
+    # Paso 4: Correr el Linter (Análisis estático)
+    - name: Run ESLint
+      run: npm run lint
+
+    # Paso 5: Correr las Pruebas Unitarias
+    - name: Run Tests
+      run: npm test
