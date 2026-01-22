@@ -3,7 +3,7 @@ const { factorial, fibonacci } = require('./math');
 
 // Pruebas para Factorial
 test('Factorial de 5 debe ser 120', () => {
-    expect(factorial(5)).toBe(100); // <--- ERROR INTENCIONAL AQUÍ
+    expect(factorial(5)).toBe(120); 
 });
 
 test('Factorial de 0 debe ser 1', () => {
